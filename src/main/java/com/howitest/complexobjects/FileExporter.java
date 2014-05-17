@@ -1,14 +1,12 @@
 package com.howitest.complexobjects;
 
-import java.io.File;
 
 public class FileExporter {
 
 	private ConverterProvider provider = new ConverterProvider();
-	private Converter converter;
 	
-	public File inputFile;
-	public File outputFile;
+	public String inputFile;
+	public String outputFile;
 	
 	//for unit tests
 	void setConverterProvider(ConverterProvider newProvider) {
@@ -16,7 +14,7 @@ public class FileExporter {
 	}
 	
 	public void exportToFormat(String format) {
-		converter = provider.createConverter(format);
+		Converter converter = provider.createConverter(format);
 		converter.convert(inputFile, outputFile);
 	}
 }

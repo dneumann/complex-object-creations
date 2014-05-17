@@ -1,10 +1,9 @@
 package com.howitest.complexobjects;
 
-import java.io.File;
 
 public class TxtToPdfConverter implements Converter {
 
-	public void convert(File inputFile, File outputFile) {
+	public void convert(String inputFile, String outputFile) {
 		throw new RuntimeException("Not implemented yet");
 	}
 
