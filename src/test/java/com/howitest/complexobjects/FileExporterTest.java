@@ -17,15 +17,12 @@ public class FileExporterTest {
 		converterMock = mock(Converter.class);
 		when(providerMock.createConverter(anyString())).thenReturn(converterMock);
 		
-		exporterSut = new FileExporter();
+		exporterSut = new FileExporter("/tmp/input.txt", "/tmp/output.pdf");
 		exporterSut.setConverterProvider(providerMock);
 	}
 	
 	@Test
 	public void shouldCallMocksProperly() {
-		exporterSut.inputFile = "/tmp/input.txt";
-		exporterSut.outputFile = "/tmp/output.pdf";
-		
 		exporterSut.exportToFormat("pdf");
 		
 		verify(providerMock).createConverter("pdf");
