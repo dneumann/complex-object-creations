@@ -22,7 +22,7 @@ public class FileExporterTest {
 	}
 	
 	@Test
-	public void shouldCallMocksProperly() {
+	public void shouldConvertToPdf() {
 		exporterSut.exportToFormat("pdf");
 		
 		verify(providerMock).createConverter("pdf");
