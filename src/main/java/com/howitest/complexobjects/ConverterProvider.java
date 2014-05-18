@@ -1,14 +1,19 @@
 package com.howitest.complexobjects;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 public class ConverterProvider {
 
 	public Converter createConverter(String format) {
-		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
-		Converter converter = context.getBean(format, Converter.class);
-		context.close();
-		return converter;
+		if ("pdf".equals(format)) {
+			Converter pdfConverter = new TxtToPdfConverter();
+			// make a lot of configurations
+			return pdfConverter;
+		} else if ("epub".equals(format)) {
+			Converter epubConverter = new TxtToEpubConverter();
+			// make a lot of configurations
+			return epubConverter;
+		} else {
+			throw new RuntimeException("Unexpected argument: " + format);
+		}
 	}
 
 }
